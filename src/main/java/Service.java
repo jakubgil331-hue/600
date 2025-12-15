@@ -1,10 +1,11 @@
-import java.util.Collection;
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class Service {
 
     public void addStudent(Student student) throws IOException {
@@ -22,7 +23,7 @@ public class Service {
         String line = "";
         while (true) {
             line = reader.readLine();
-            if(line == null)
+            if(line == null) 
                 break;
             ret.add(Student.Parse(line));
         }

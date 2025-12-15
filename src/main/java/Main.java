@@ -6,6 +6,7 @@ public class Main {
 
     static class WrongStudentName extends Exception {}
     static class WrongAge extends Exception {}
+    static class WrongDateOfBirth extends Exception {}
 
     static Scanner scan = new Scanner(System.in);
 
@@ -31,6 +32,8 @@ public class Main {
                 System.out.println("Błędne imię studenta!");
             } catch (WrongAge e) {
                 System.out.println("Błędny wiek! Poprawny zakres: 1-99.");
+            } catch (WrongDateOfBirth e) {
+                System.out.println("Błędny format daty urodzenia! Poprawny format: DD-MM-YYYY (2-2-4 cyfry).");
             } catch (InputMismatchException e) {
                 System.out.println("Błędny format wejścia! Oczekiwano liczby.");
                 scan.nextLine(); 
@@ -57,7 +60,7 @@ public class Main {
         return name;
     }
 
-    public static void exercise1() throws IOException, WrongStudentName, WrongAge {
+    public static void exercise1() throws IOException, WrongStudentName, WrongAge, WrongDateOfBirth {
         var name = ReadName();
         System.out.println("Podaj wiek: ");
         var age = scan.nextInt();
@@ -69,6 +72,11 @@ public class Main {
         scan.nextLine();
         System.out.println("Podaj datę urodzenia DD-MM-YYYY");
         var date = scan.nextLine();
+
+        if (!date.matches("\\d{2}-\\d{2}-\\d{4}")) { 
+            throw new WrongDateOfBirth();
+        }
+
         (new Service()).addStudent(new Student(name, age, date));
     }
 
