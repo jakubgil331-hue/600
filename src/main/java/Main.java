@@ -7,6 +7,7 @@ public class Main {
     static class WrongStudentName extends Exception {}
     static class WrongAge extends Exception {}
     static class WrongDateOfBirth extends Exception {}
+    static class WrongMenuOption extends Exception {}
 
     static Scanner scan = new Scanner(System.in);
 
@@ -24,12 +25,16 @@ public class Main {
                     case 3:
                         exercise3();
                         break;
-                    default:
+                    case 0:
                         return;
+                    default:
+                        throw new WrongMenuOption();
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Błędny format wyboru! Wprowadź cyfrę.");
                 scan.nextLine();
+            } catch (WrongMenuOption e) {
+                System.out.println("Błędny wybór menu! Poprawny zakres: 0-3.");
             } catch (IOException e) {
             } catch (WrongStudentName e) {
                 System.out.println("Błędne imię studenta!");
