@@ -27,6 +27,9 @@ public class Main {
                     default:
                         return;
                 }
+            } catch (InputMismatchException e) {
+                System.out.println("Błędny format wyboru! Wprowadź cyfrę.");
+                scan.nextLine();
             } catch (IOException e) {
             } catch (WrongStudentName e) {
                 System.out.println("Błędne imię studenta!");
@@ -34,9 +37,6 @@ public class Main {
                 System.out.println("Błędny wiek! Poprawny zakres: 1-99.");
             } catch (WrongDateOfBirth e) {
                 System.out.println("Błędny format daty urodzenia! Poprawny format: DD-MM-YYYY (2-2-4 cyfry).");
-            } catch (InputMismatchException e) {
-                System.out.println("Błędny format wejścia! Oczekiwano liczby.");
-                scan.nextLine(); 
             }
         }
     }
